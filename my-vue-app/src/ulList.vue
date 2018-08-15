@@ -1,10 +1,10 @@
 <template>
-    <li>{{todo.text}}</li>
+    <li v-bind:data-group="group">{{todo.text}}</li>
 </template>
 
 <script>
     export default{
-        props:['todo'],
+        props : ['todo', 'group'],
         data(){
             return{
                 
