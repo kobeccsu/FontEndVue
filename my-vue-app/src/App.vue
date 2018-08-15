@@ -17,22 +17,30 @@
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
     </ul>
       <Header></Header>
+      <lilist v-for="item in groceryList" v-bind:key="item.id" v-bind:todo="item"></lilist>
   </div>
 
 </template>
 
 <script>
 import Header from "./Header.vue"
+import lilist from "./ulList.vue"
 
 export default {
   name: 'app',
   data () {
     return {
-      msg: 'Lei'
+      msg: 'Lei',
+      groceryList: [
+        { id: 0, text: 'Vegetables' },
+        { id: 1, text: 'Cheese' },
+        { id: 2, text: 'Whatever else humans are supposed to eat' }
+      ]
     }
   },
   components:{
-    Header
+    Header,
+    lilist
   }
 }
 </script>
