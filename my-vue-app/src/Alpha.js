@@ -1,4 +1,4 @@
 let a = 1;
 let b = 'Steve';
 
-export {a, c}
+export {a, b}

@@ -1,5 +1,5 @@
 <template>
-    <li v-bind:data-group="group" v-bind:data-name="a">{{todo.text}}</li>
+    <li v-bind:data-group="group" v-bind:data-name="c">{{todo.text}}</li>
 </template>
 
 <script>
@@ -9,7 +9,9 @@
         props : ['todo', 'group'],
         data(){
             return{
-                a: a
+                a: a,
+                b: b,
+                c: a+b
             }
         }
     }
