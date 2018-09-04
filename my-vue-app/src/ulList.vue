@@ -3,13 +3,13 @@
 </template>
 
 <script>
-    import {a,c} from './Alpha';
+    import {a,b} from './Alpha';
+
     export default{
         props : ['todo', 'group'],
         data(){
             return{
-                a: a,
-                c: c
+                a: a
             }
         }
     }
