@@ -16,8 +16,13 @@
       <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
     </ul>
+
+
       <Header></Header>
       <lilist v-for="item in groceryList" v-bind:group="msg" v-bind:key="item.id" v-bind:todo="item"></lilist>
+      <router-link to="/foo">Foo</router-link>
+      <router-link to="/bar">Bar</router-link>
+      <router-view></router-view>
   </div>
 
 </template>
