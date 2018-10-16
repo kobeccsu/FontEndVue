@@ -17,11 +17,14 @@
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
     </ul>
 
-
       <Header></Header>
+
       <lilist v-for="item in groceryList" v-bind:group="msg" v-bind:key="item.id" v-bind:todo="item"></lilist>
       <router-link to="/foo">Foo</router-link>
       <router-link to="/bar">Bar</router-link>
+      <router-link to="/user/zhoulei">User</router-link>
+      <router-link to="/user/hezhaohui">User 1</router-link>
+      <button @click="goBack"></button>
       <router-view></router-view>
   </div>
 
@@ -41,6 +44,18 @@ export default {
         { id: 1, text: 'Cheese' },
         { id: 2, text: 'Whatever else humans are supposed to eat' }
       ]
+    }
+  },
+  computed:{
+    username(){
+      return this.$router.params.username;
+    }
+  },
+  methods:{
+    goBack(){
+      window.history.length > 1 ?
+        this.$router.go(-1):
+        this.$router.push('/');
     }
   },
   components:{
