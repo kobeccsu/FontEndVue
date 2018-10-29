@@ -22,9 +22,9 @@
       <lilist v-for="item in groceryList" v-bind:group="msg" v-bind:key="item.id" v-bind:todo="item"></lilist>
       <router-link to="/foo">Foo</router-link>
       <router-link to="/bar">Bar</router-link>
-      <router-link to="/user/zhoulei">User</router-link>
+      <router-link :to="{name:'user', params:{username:'zhoulei'}}">User</router-link>
       <router-link to="/user/hezhaohui">User 1</router-link>
-      <button @click="goBack"></button>
+      <button @click="goBack">Go Back</button>
       <router-view></router-view>
   </div>
 

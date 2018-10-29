@@ -3,7 +3,7 @@ import App from './App.vue'
 import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
-const Foo = { template: "<div>Foo component<router-link to='/foo/ch1'>Ch1</router-link><router-view></router-view></div>" };
+const Foo = { template: "<div>Foo component<router-link to='/foo/ch1'>Ch1</router-link><router-view></router-view><router-view name='ch2'></router-view></div>" };
 const Bar = { template: "<div>Bar component</div>" };
 
 const Ch1 = { template: "<div>Ch1 Component</div>" };
@@ -19,11 +19,14 @@ const User = {
 };
 
 const routes = [
-  { path: '/foo', component: Foo, children:[
-      { path:'ch1', component: Ch1 }
-  ]}, 
+  { 
+    path: '/foo', 
+    component: Foo, 
+    children:[
+      { path:'ch1', components: {default: Ch1, ch2: Ch2} }
+    ]}, 
   { path: '/bar', component: Bar },
-  { path: '/user/:username', component: User }
+  { path: '/user/:username', name:'user', component: User }
 ];
 
 var router = new VueRouter({ routes });
