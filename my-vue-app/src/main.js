@@ -2,6 +2,8 @@ import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
 import Vuex from 'vuex'
+import Mutations from './Mutations'
+import { runInThisContext } from 'vm';
 
 Vue.use(VueRouter)
 Vue.use(Vuex)
@@ -21,6 +23,7 @@ const User = {
       const toDepth = to.path.split('/').length
       const fromDepth = from.path.split('/').length
       this.transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left'
+      console.log('current state : ' + this.$store.getters.currCount);
     }
   }
 };
@@ -47,8 +50,29 @@ router.beforeEach((to, from, next) =>{
   }
 });
 
+// Vuex part
+const store = new Vuex.Store({
+  state:{
+    count : 0
+  },
+  mutations:{
+    [Mutations.INCREMENT] (state, payload){
+      state.count += payload.amount;
+    }
+  },
+  getters:{
+    currCount: state => { return state.count }
+  },
+  actions:{
+    increment(context){
+      context.commit(Mutations.INCREMENT, {amount: 10});
+    }
+  }
+});
+
 new Vue({
   el: '#app',
+  store,
   router,
   render: h => h(App)
 })
