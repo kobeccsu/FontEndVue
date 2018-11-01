@@ -25,7 +25,10 @@
       <router-link :to="{name:'user', params:{username:'zhoulei'}}">User</router-link>
       <router-link to="/user/hezhaohui">User 1</router-link>
       <button @click="goBack">Go Back</button>
-      <router-view></router-view>
+
+      <transition name="welcome" >
+        <router-view></router-view>
+      </transition>
   </div>
 
 </template>
@@ -92,4 +95,17 @@ li {
 a {
   color: #42b983;
 }
+
+
+ /* Welcome Styles */
+    .welcome-enter {
+        transform: translateX(10px);
+        opacity: 0;
+    }
+    .welcome-enter-active {
+        transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+    }
+    .welcome-leave-active, .welcome-leave-to {
+        opacity: 0;
+    }
 </style>
