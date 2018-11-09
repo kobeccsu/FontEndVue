@@ -36,6 +36,7 @@
 <script>
 import Header from "./Header.vue"
 import lilist from "./ulList.vue"
+import Mutations from './Mutations'
 
 export default {
   name: 'app',
@@ -59,7 +60,12 @@ export default {
       window.history.length > 1 ?
         this.$router.go(-1):
         this.$router.push('/');
-        this.$store.dispatch('increment');
+
+        //this.$store.dispatch(Mutations.INCREMNET_ASYNC, {number:10});
+        //this.$store.dispatch(Mutations.SHOW_HELLO).then(()=>{
+        //  console.log('get the result');
+        //});
+        this.$store.dispatch(Mutations.FIGHT);
     }
   },
   components:{

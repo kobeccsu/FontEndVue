@@ -53,19 +53,44 @@ router.beforeEach((to, from, next) =>{
 // Vuex part
 const store = new Vuex.Store({
   state:{
-    count : 0
+    count : 0,
+    fly: 1
   },
   mutations:{
     [Mutations.INCREMENT] (state, payload){
       state.count += payload.amount;
+    },
+    [Mutations.SHOW_HELLO](state){
+     console.log('Hello ' + state.fly++);
     }
   },
   getters:{
     currCount: state => { return state.count }
   },
   actions:{
-    increment(context){
-      context.commit(Mutations.INCREMENT, {amount: 10});
+    [Mutations.INCREMNET_ASYNC]({commit}, number){
+      setTimeout(() => {
+        commit(Mutations.INCREMENT, { amount: number.number });
+      }, 500);
+    },
+    [Mutations.SHOW_HELLO]({commit}){
+      return new Promise((resolve, reject)=>{
+        setTimeout(() => {
+          commit(Mutations.SHOW_HELLO)
+          resolve();
+        }, 1000);
+      });
+    },
+    async [Mutations.GETDATA](){
+      return new Promise((resolve, reject) =>{
+        setTimeout(() => {
+          resolve(20);
+        }, 2000);
+      });
+    },
+    async [Mutations.FIGHT]({dispatch, commit}) {
+      await dispatch(Mutations.SHOW_HELLO)
+      commit(Mutations.INCREMENT, {amount:await dispatch(Mutations.GETDATA)} )
     }
   }
 });

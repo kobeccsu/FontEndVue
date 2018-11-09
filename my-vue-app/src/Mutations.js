@@ -1,4 +1,9 @@
 export default{
     INCREMENT: 'increment',
-    DECREMENT: 'decrement'
+    INCREMNET_ASYNC: 'increamentAsync',
+    DECREMENT: 'decrement',
+    DECREMENT_ASYNC: 'decrementAsync',
+    SHOW_HELLO: 'hello',
+    FIGHT: 'fight',
+    GETDATA: 'getData'
 }
