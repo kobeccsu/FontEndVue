@@ -3,6 +3,7 @@
     <img src="./assets/logo.png">
     <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
+    <Search></Search>
     <ul>
       <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
       <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
@@ -37,6 +38,7 @@
 import Header from "./Header.vue"
 import lilist from "./ulList.vue"
 import Mutations from './Mutations'
+import Search from './Search'
 
 export default {
   name: 'app',
@@ -70,7 +72,8 @@ export default {
   },
   components:{
     Header,
-    lilist
+    lilist,
+    Search
   }
 }
 </script>
